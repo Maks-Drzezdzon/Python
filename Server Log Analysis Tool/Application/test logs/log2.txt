@@ -1,0 +1,6 @@
+[Thu Oct 11 07:58:23 2019] [warn] [client 203.160.52.2] mod_fcgid: can't apply process slot for /var/www/cgi-bin/cgi_wrapper/cgi_wrapper, referer: https://www.somewebsite.com/index.php/somefolder/groupfolder/group-contact-form
+[Thu Oct 11 07:58:23 2018] [warn] [client 203.160.52.3] mod_fcgid: can't apply process slot for /var/www/cgi-bin/cgi_wrapper/cgi_wrapper, referer: https://www.somewebsite.com/index.php/somefolder/groupfolder/group-contact-form
+[Thu Oct 11 07:58:23 2017] [warn] [client 203.160.52.4] mod_fcgid: can't apply process slot for /var/www/cgi-bin/cgi_wrapper/cgi_wrapper, referer: https://www.somewebsite.com/index.php/somefolder/groupfolder/group-contact-form
+[Thu Oct 11 07:58:23 2016] [warn] [client 203.160.52.5] mod_fcgid: can't apply process slot for /var/www/cgi-bin/cgi_wrapper/cgi_wrapper, referer: https://www.somewebsite.com/index.php/somefolder/groupfolder/group-contact-form
+[Thu Oct 11 07:58:23 2015] [warn] [client 203.160.52.6] mod_fcgid: can't apply process slot for /var/www/cgi-bin/cgi_wrapper/cgi_wrapper, referer: https://www.somewebsite.com/index.php/somefolder/groupfolder/group-contact-form
+[Thu Oct 11 07:58:23 2014] [warn] [client 203.160.52.7] mod_fcgid: can't apply process slot for /var/www/cgi-bin/cgi_wrapper/cgi_wrapper, referer: https://www.somewebsite.com/index.php/somefolder/groupfolder/group-contact-form

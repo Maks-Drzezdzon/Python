@@ -1,0 +1,2 @@
+[Thu Oct 11 07:58:23 2018] [warn] [client 203.160.52.2] mod_fcgid: can't apply process slot for /var/www/cgi-bin/cgi_wrapper/cgi_wrapper, referer: https://www.somewebsite.com/index.php/somefolder/groupfolder/group-contact-form
+[Thu Oct 11 07:58:23 2018] [warn] [client 203.160.52.2] mod_fcgid: can't apply process slot for /var/www/cgi-bin/cgi_wrapper/cgi_wrapper, referer: https://www.somewebsite.com/index.php/somefolder/groupfolder/group-contact-form
