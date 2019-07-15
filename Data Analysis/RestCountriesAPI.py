@@ -1,6 +1,17 @@
 import requests,json,pprint
 pretty = pprint.PrettyPrinter(indent = 2)
 
+def eu():
+    request = requests.get('https://restcountries.eu/rest/v2/region/europe')
+    json_text = json.dumps(request.json())
+    request_response = json.loads(json_text)
+    #pretty.pprint(request_response)
+    for element in request_response:
+        pretty.pprint(request_response[element])
+
+eu()
+
+
 #API used for this is:
 #https://restcountries.eu/#filter-response
 def tag_to_name(country_dict) -> list:
@@ -16,7 +27,7 @@ def tag_to_name(country_dict) -> list:
         
     return list1
 
-def name(country:str) -> dict:
+def country_lookup(country:str) -> dict:
     #request = requests.get('https://restcountries.eu/rest/v2/region/europe')
     #country='pol'
     request = requests.get('https://restcountries.eu/rest/v2/alpha/'+country)
@@ -36,7 +47,7 @@ def name(country:str) -> dict:
     return country_dict
 
 
-print(name("pol"))
+print(country_lookup("pol"))
     
 
 
