@@ -1,11 +1,10 @@
 from ipwhois import IPWhois
 from pprint import pprint
-
 #usefull link 
 #https://pypi.org/project/ipwhois/
-#
 file_path = '..//Application/sorted_log.txt'
 whois_read = open(file_path , 'r')
+
 
 def whois():
     try:

@@ -7,23 +7,23 @@ import re
 def main():
     data = pd.read_csv('log.csv')
     data['Address'] = data.Address.astype('str')
-    #print(data.dtypes) 
-    #open file for reading
+    # print(data.dtypes) 
+    # open file for reading
    
     #https://pythex.org/
     #\W(103)
     
     def time():
         data = pd.read_csv('unique.csv')
-        #prints out occurances over ip count     
-        #data['Time'] = pd.to_datetime(data.Time)
-        #works on the data sample using the occurances data as x value
-        #sorts it by index to make the plot more smooth and plots it
+        # prints out occurances over ip count     
+        # data['Time'] = pd.to_datetime(data.Time)
+        # works on the data sample using the occurances data as x value
+        # sorts it by index to make the plot more smooth and plots it
         data.Occurrences.value_counts().sort_index().plot()
-        #names labels x and y
+        # names labels x and y
         plt.xlabel('Number of occurrences')
         plt.ylabel('Unique addresses recorded')
-        #plt.plot(sample.Occurrences , sample.Unique_IP)
+        # plt.plot(sample.Occurrences , sample.Unique_IP)
     
         time()
     
@@ -33,10 +33,10 @@ def main():
         data = pd.read_csv('log.csv')
         data['Time'] = pd.to_datetime(data.Time)
         data.Time.value_counts().sort_index().plot()
-        #prints out occurances over ip count     
-        #group_a = data[data.Address] 
-        #group_b = data[data.Address] 
-        #group_c = data[data.Address]
+        # prints out occurances over ip count     
+        # group_a = data[data.Address] 
+        # group_b = data[data.Address] 
+        # group_c = data[data.Address]
         
         heat()
        

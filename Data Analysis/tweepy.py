@@ -35,7 +35,7 @@ user_tweets = api.user_timeline('Grimmr')
 for tweet in user_tweets:
     print(tweet.created_at , tweet.text)
     
-#save output to file
+# save output to file
 csvfile = open('twitter_data.csv' , 'wb')
 csvwrite = csv.writer(csvfile)
 

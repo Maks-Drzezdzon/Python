@@ -1,6 +1,7 @@
 from ipwhois import IPWhois
 from pprint import pprint
 
+
 def whois(ip):
         try:
             #use the IPWhois method to check the ip stored in store_ip

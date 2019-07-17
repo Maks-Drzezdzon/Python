@@ -9,17 +9,17 @@ def main():
     c_set = set()
     d_set = set()
     def test():    
-        #read all lines in the file 
+        # read all lines in the file 
         
-        #loops through the file putting it in a specific pattern for the code to read
-        #and sort in read_data
+        # loops through the file putting it in a specific pattern for the code to read
+        # and sort in read_data
         with open('sl.txt', 'r') as in_file:
             
             
             for line in in_file:
                 remove = line.split(';')
                 bit = int(remove.split('.')[0])
-                #compare 
+                # compare 
                 if bit < 126:
                     ++classA
                     a_set.add(line)
@@ -48,6 +48,6 @@ def main():
             print("set D data")   
             print("number of type D addresses found : " + classD) 
             print(d_set)
-    #runs the code function
+    # runs the code function
     test()
 main()

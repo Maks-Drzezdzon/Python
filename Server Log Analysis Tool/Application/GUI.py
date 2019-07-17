@@ -63,7 +63,7 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
        
         
-        #code to connect functionality 
+        # code to connect functionality 
         self.btnClean.clicked.connect(self.cleanfunc)   
         self.btnipWhois.clicked.connect(self.ipwhoisfunc)     
         self.btnExit.clicked.connect(self.exitfunc)       
@@ -74,7 +74,7 @@ class Ui_MainWindow(object):
        
     def ipwhoisfunc(self):
         try:
-            #whois()
+            # whois()
             print (' test ')
         except Exception as e:
             print(e)
@@ -123,7 +123,7 @@ class Ui_MainWindow(object):
             if os.path.exists("unique.csv"):
                 data = pd.read_csv('unique.csv' ,skiprows = None)
                 data = data.Occurrences.value_counts().sort_index().plot()
-                #names labels x and y
+                # names labels x and y
                 plt.xlabel('Number of occurrences')
                 plt.ylabel('Unique addresses recorded')
             
@@ -133,7 +133,7 @@ class Ui_MainWindow(object):
         
     def cleanfunc(self):
         try:
-            #deletes tmp files if they are not going to be used by user
+            # deletes tmp files if they are not going to be used by user
             clean()
             print ('Task Finished !')
         except Exception as e:
