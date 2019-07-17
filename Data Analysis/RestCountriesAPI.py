@@ -9,9 +9,13 @@ def eu():
     request = requests.get('https://restcountries.eu/rest/v2/region/europe')
     json_text = json.dumps(request.json())
     request_response = json.loads(json_text)
+    
     for element in request_response:
-        pprint.pprint(request_response[element])
-
+        try:
+            pprint.pprint(request_response[0])
+            # pprint.pprint(request_response[0][element]['name'])
+        except:
+            print("error retrieving data from region EU")
 
 # API used for this is:
 # https://restcountries.eu/#filter-response
@@ -24,7 +28,10 @@ def tag_to_name(country_dict) -> list:
         request = requests.get('https://restcountries.eu/rest/v2/alpha/'+tag)
         json_text = json.dumps(request.json())
         request_response = json.loads(json_text)
-        list1.append(request_response['name'])
+        try:
+            list1.append(request_response['name'])
+        except:
+            print("names of bordering countries were not found")
     return list1
 
 
@@ -38,9 +45,18 @@ def country_lookup(country: str) -> dict:
     json_text = json.dumps(request.json())
     # converst it to string format
     request_response = json.loads(json_text)
-    country_tags = {"bordering_countries": request_response['borders']}
-    country_dict = {"country_name": request_response['name'],
-                    # languages is a list of dictionaries
-                    "bordering_countries": tag_to_name(country_tags),
-                    "main_language": request_response['languages'][0]['name']}
-    return country_dict
+    try:
+        country_tags = {"bordering_countries": request_response['borders']}
+    except:
+        print("No bordering countries")
+    try:
+        country_dict = {"country_name": request_response['name'],
+                        # languages is a list of dictionaries
+                        "bordering_countries": tag_to_name(country_tags),
+                        "main_language": request_response['languages'][0]['name']}
+        return pprint.pprint(country_dict)
+    except:
+        print("Country with name of " + "'" + country + "'" + " not found , please try another variation")
+
+
+country_lookup("Ireland")
