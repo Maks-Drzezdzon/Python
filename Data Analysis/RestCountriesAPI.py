@@ -36,8 +36,9 @@ def tag_to_name(country_dict) -> list:
 
 
 def country_lookup(country: str) -> dict:
-
-    # request = requests.get('https://restcountries.eu/rest/v2/region/europe')
+    # add functionallity so that a name like germany gets translated to a tag,
+    # possibily with a try excpet finally to check if germany resolves to DE
+    
     # country='pol'
     request = requests.get('https://restcountries.eu/rest/v2/alpha/'+country)
     # stores data from api in data
@@ -59,4 +60,4 @@ def country_lookup(country: str) -> dict:
         print("Country with name of " + "'" + country + "'" + " not found , please try another variation")
 
 
-country_lookup("Ireland")
+country_lookup("DE")
