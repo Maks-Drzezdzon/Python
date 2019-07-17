@@ -1,7 +1,13 @@
 import requests
 import json
 import pprint
+import pyodbc as db
+
 pprint = pprint.PrettyPrinter(indent=2)
+conn = db.connect("Driver={SQL Server Native Client 11.0};"
+                  "Server=;"
+                  "Database=;"
+                  "Trusted_Connection=yes;")
 
 
 def eu():
