@@ -33,11 +33,14 @@ def tag_to_name(country_dict) -> list:
     country_tags = country_dict["bordering_countries"]
     list_of_countries = list()
     for tag in country_tags:
+        # requests data from api for each tag
         request_response = look_up_api(tag)
         try:
+            # translates tag to full name using api and stores in list
             list_of_countries.append(request_response['name'])
-        except:
-            print("names of bordering countries were not found")
+        except Exception as err:
+            print(err)
+            print("name/s of bordering countrie/s were not found")
     return list_of_countries
     
     
