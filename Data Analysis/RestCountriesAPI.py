@@ -8,9 +8,9 @@ import time
 
 class Look_up():
     # TODO use db , use logger more 
-    def __init__(self,country: str = "",country_dict: dict = dict()) -> None:
-        self.country = country
-        self.country_dict = country_dict
+    # def __init__(self,country: str = "",country_dict: dict = dict()) -> None:
+        # self.country = country
+        # self.country_dict = country_dict
         
     # class Country_lookup(country):
     def look_up_api(country):
