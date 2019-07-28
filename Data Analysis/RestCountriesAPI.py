@@ -4,7 +4,7 @@ import pprint
 import pyodbc as db
 import logging
 import time
-
+# https://httpbin.org/
         
 '''conn = db.connect("Driver={SQL Server Native Client 11.0};"
                       "Server=;"
@@ -81,6 +81,7 @@ class Look_up():
                             "bordering_countries": Look_up.tag_to_name(country_tags),
                             # languages is a list of dictionaries
                             "main_language": request_response['languages'][0]['name']}
+            
             return country_dict
         except Exception as err:
             print("Country with name of " + "'" + country + "'" + " not found , please try another variation")
@@ -107,7 +108,7 @@ class Look_up():
             except:
                 print("error retrieving data from region EU")
 
-pprint.pprint(Look_up.country_lookup("pol"))
+pprint.pprint(Look_up.country("pol"))
 #Look_up.eu()
 
 
