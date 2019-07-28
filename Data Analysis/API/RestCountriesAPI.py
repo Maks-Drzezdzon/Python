@@ -73,8 +73,7 @@ class Look_up():
             country_tags = {"bordering_countries": request_response['borders']}
         except Exception as err:
             print("No bordering countries")
-            print(err)
-            raise
+            raise Exception(err)
         try:
             country_dict = {"country_name": request_response['name'],
                             # converts tag "DE" to germany country name
@@ -85,8 +84,7 @@ class Look_up():
             return country_dict
         except Exception as err:
             print("Country with name of " + "'" + country + "'" + " not found , please try another variation")
-            print(err)
-            raise
+            raise Exception(err)
         finally:
             # tracks runtime of request
             stop_time = time.time()

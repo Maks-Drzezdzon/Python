@@ -31,9 +31,9 @@ records =[]
 for element in results:
     date = element.find('strong').text[0:-1] + ', 2017'
     assertion = element.contents[1][1:-2]
-    oppinion = element.find('a').text[1:-1]
+    opinion = element.find('a').text[1:-1]
     url = element.find('a')['href']
-    records.append((date, assertion, oppinion, url))   
+    records.append((date, assertion, opinion, url))   
 #print(records[0:3])
 df = pd.DataFrame(records, columns=['date','assertion','oppinion','url'])
 # print(df.head())

@@ -1,13 +1,13 @@
 import json
 import requests
 import pprint
-from bs4 import BeautifulSoup
-
 #  https://api.publicapis.org/
 # /entries for a list of apis
 # /random for one random api response
 # /categories for a list of categories
 class PublicAPI():
+    
+    
     def query_public_api(data: str) -> dict:
         ''' pass in one of 3 args below in str form to query api 
                 entries , random or categories '''
@@ -35,7 +35,8 @@ class PublicAPI():
             return response_data
         else:
             print("Error querying  "+ response.status_code) 
-            
+       
+        
     def query_data(data: dict) -> None:
         # pprint.pprint(data)
         pprint.pprint(data['entries'][0]['Link'])
