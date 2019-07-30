@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import pprint
 
 data = requests.get('https://www.wowprogress.com/')
 soup = BeautifulSoup(data.text,'html.parser')
@@ -25,23 +26,27 @@ team={}
 #print(name, realm, current_raid, prog)
 for ele in names:
     for name in ele:
-        #print (name)
-        team_names.append(name)
+            if name != ' ':
+                team_names.append(name)
         
 for ele in realms:
     for realm in ele:
-        #print (realm)
-        team_realm.append(realm)   
+        if realm != ' ':
+            team_realm.append(realm)   
         
 for ele in prog:
     # full class
     for proggress in ele:
         # prog with tags
-        for i in proggress:   
+        for i in proggress:
+            if i != ' ':
             # prog without tags
-            print (i)
-            current_prog.append(i)
+                current_prog.append(i)
 
 
-for ele in team_names,team_realm,current_prog:
-    print(team_names[0],team_realm[0],current_prog[0])
+team_scored = dict(zip(team_names,current_prog))
+team_servers = dict(zip(team_names,team_realm))
+pprint.pprint (team_servers)
+
+#print(len(team_names))
+#print(current_prog)
