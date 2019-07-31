@@ -18,35 +18,15 @@ names = table.find_all('nobr') # retrives name of team
 realms = table.find_all('a',{'class':'realm'}) # retrives server team plays on
 prog = table.find_all('span',{'class':'innerLink ratingProgress'}) # retrives current proggression 
 
-team_names = []
-team_realm = []
-current_prog = []
-
-team={}
-#print(name, realm, current_raid, prog)
-for ele in names:
-    for name in ele:
-            if name != ' ':
-                team_names.append(name)
-        
-for ele in realms:
-    for realm in ele:
-        if realm != ' ':
-            team_realm.append(realm)   
-        
-for ele in prog:
-    # full class
-    for proggress in ele:
-        # prog with tags
-        for i in proggress:
-            if i != ' ':
-            # prog without tags
-                current_prog.append(i)
-
+team_names = [name for element in names for name in element if name !=' ']
+team_realm = [realm for element in realms for realm in element if realm !=' ']
+current_prog = [progress for element in prog for data in element for progress in data if progress !=' ']
 
 team_scored = dict(zip(team_names,current_prog))
 team_servers = dict(zip(team_names,team_realm))
 pprint.pprint (team_servers)
+pprint.pprint (team_scored)
+
 
 #print(len(team_names))
 #print(current_prog)
