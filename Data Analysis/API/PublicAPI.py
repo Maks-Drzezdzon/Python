@@ -30,8 +30,8 @@ class PublicAPI():
     
     
     def open_html_page(data: str) -> None:
+        '''opens the html page in string form'''
         try:
-            #response = requests.get(data)
             response = requests.get(data.strip())
             # check response
             if response.status_code == 200:
@@ -43,16 +43,16 @@ class PublicAPI():
        
         
     def query_data(data: dict) -> None:
-        # pprint.pprint(data)
         try:
             pprint.pprint(data['entries'][0]['Link'])
             store_response = str(data['entries'][0]['Link'])
             print("value " + store_response)
-            #page_data = PublicAPI.open_html_page(store_response)
+            page_data = PublicAPI.open_html_page(store_response)
             # limit to first x chars
-            #print(page_data[0:1000])
+            print(page_data[0:1000])
         except Exception as err:
             print("query_data error in PublicAPI "+err)
 
-
-pprint.pprint(PublicAPI.query_public_api('entries')['entries'][0])
+# testing output
+# print(PublicAPI.query_public_api('random'))
+# pprint.pprint(PublicAPI.query_public_api('entries')['entries'][0])
