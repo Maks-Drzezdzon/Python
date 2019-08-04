@@ -2,11 +2,7 @@ import tweepy
 import os
 import sys
 import time
-from bs4 import BeautifulSoup
 
-soup = BeautifulSoup(PLACE_HOLDER.text,'html.parser')
-# finds pattern in html with tags span class short-desc
-results = soup.find_all('span', attrs={'class' : 'short-desc'})
 
 
 with open("C:/Users/Grim/Desktop/twitter_key.txt") as keys_file:
@@ -22,7 +18,7 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
 time_stamp = time.ctime()
-api.update_status("api test on " + time_stamp)
+# api.update_status("api test on " + time_stamp)
 
 public_tweets = api.home_timeline()
 for tweet in public_tweets:
