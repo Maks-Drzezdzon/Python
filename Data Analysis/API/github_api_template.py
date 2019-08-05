@@ -13,7 +13,7 @@ password = text[1].strip().split(' ')[-1]
 # r = requests.get('https://api.github.com/user', auth=(user, password))
 
 def search_user(user,password):
-    r = requests.get('https://api.github.com/user/repos', auth=(user, password))
+    r = requests.get('https://api.github.com/user/repos', auth=(user, password), timeout=(2,5))# connecting to server timeout / read timeout)
     json_text = json.dumps(r.json())
     request_response = json.loads(json_text)
     # dictionary ={"my_id": request_response['id'],"my_login": request_response['login']}
@@ -41,7 +41,7 @@ links = search_user(user,password)
     else:
         print("connection made")'''
         
-resp = requests.delete('https://api.github.com/user/repos/Hello-World', auth=(user, password))
+resp = requests.delete('https://api.github.com/user/repos/topics', auth=(user, password))
 #pprint.pprint(json.dumps(resp.json()))
 pprint.pprint(resp)
 
