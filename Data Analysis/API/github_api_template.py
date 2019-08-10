@@ -41,9 +41,9 @@ links = search_user(user,password)
     else:
         print("connection made")'''
         
-resp = requests.delete('https://api.github.com/user/repos/topics', auth=(user, password))
+resp = requests.get('https://api.github.com/user', auth=(user, password))
 #pprint.pprint(json.dumps(resp.json()))
-pprint.pprint(resp)
+pprint.pprint(resp.json()['email'])
 
 '''data = {
   "name": "test-repo",
