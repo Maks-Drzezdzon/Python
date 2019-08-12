@@ -1,4 +1,5 @@
 import requests
+from requests import Session, Request
 import json
 from requests.exceptions import HTTPError
 import pprint
@@ -35,6 +36,8 @@ a = requests.get(url+'/ip')
 a.headers.update({'test':'testServer'})
 rep = requests.get(url+'/headers')
 
-
+s = Session()
+n = Request('GET',url, data = d)
+pprint.pprint(n)
 
 
