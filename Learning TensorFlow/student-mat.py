@@ -29,6 +29,13 @@ l = linear_model.LinearRegression()
 l.fit(x_train, y_train)
 accuracy = l.score(x_test, y_test)
 # print(accuracy) 88.6% accurate
+# print('coefficient: ', l.coef_)
+# print('intercept ', l.intercept_)
 
+predict = l.predict(x_test)
 
+for ele in range(len(predict)):
+    print ('p ', predict[ele])
+    print('x ', x_test[ele])
+    print('y ', y_test[ele])
 
