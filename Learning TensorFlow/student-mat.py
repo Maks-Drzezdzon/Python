@@ -20,7 +20,9 @@ x = np.array(data.drop([label_grade], 1))
 y = np.array(data[label_grade])
 
 
-# splits data into 10% for testing
+# cant test model with used data
+# this prevents poor results from being produced
+# reserves 10% of data for testing
 x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split( x, y, test_size = 0.1)
 
 l = linear_model.LinearRegression()
