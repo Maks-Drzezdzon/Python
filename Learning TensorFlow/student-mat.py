@@ -55,7 +55,7 @@ for ele in range(len(predict)):
     print('x ', x_test[ele])
     print('y ', y_test[ele])
 
-p = 'G1'
+p = 'studytime'
 style.use("ggplot")
 pyplot.scatter(data[p],data["G3"])
 pyplot.xlabel(p)
