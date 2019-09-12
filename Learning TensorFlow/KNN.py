@@ -6,6 +6,17 @@ from sklearn.neighbors import KNeighborsClassifier
 import numpy as np
 from sklearn import linear_model, preprocessing
 
+# KNN is a classification alg
+# create groups
+# data is then going to be put into closest groups ie neighbor
+# set var to a nummber which will dictated the x closest points to your data point
+# x closest points to var are of group A so var probably belongs to group A
+# E.G x = 5, 2 are Group A 3 are Group B, var probably belongs to group B
+# x has to be an odd number so there will always be an uneven split making 1 group dominant
+# x should not be too high so that far off points dont get picked for small data groups
+# KNN is comp heavy because distance is calc for each point every time
+
+
 # note pandas reads in the first line of your data file as the col
 
 data = pd.read_csv('car.data')
@@ -15,7 +26,7 @@ data = pd.read_csv('car.data')
 # operation can be performed 
 pe = preprocessing.LabelEncoder()
 
-# mapping data to col name to convert
+# mapping data from col name to variables
 buying = pe.fit_transform(list(data["buying"]))
 maint = pe.fit_transform(list(data["maint"]))
 door = pe.fit_transform(list(data["door"]))
