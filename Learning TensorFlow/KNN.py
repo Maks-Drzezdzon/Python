@@ -6,6 +6,8 @@ from sklearn.neighbors import KNeighborsClassifier
 import numpy as np
 from sklearn import linear_model, preprocessing
 
+import pickle
+
 # KNN is a classification alg
 # create groups
 # data is then going to be put into closest groups ie neighbor
@@ -44,3 +46,36 @@ Y = list(clas)
 x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(X, Y, test_size = 0.1)
 
 # print(x_train, y_test)
+model = KNeighborsClassifier(n_neighbors = 9)
+
+model.fit(x_train, y_train)
+acc = model.score(x_test, y_test)
+# print(acc)
+
+pre = model.predict(x_test)
+names = ["unacc","acc","good","veryGood"]
+
+for ele in range(len(pre)):
+    print("Predicted: ",names[pre[ele]],"Data: ", x_test[ele], "Actual: ",names[y_test[ele]])
+    # find distance of neighbors
+    # model.kneighbors([x_test[ele]], 9, True)
+    
+    
+    
+'''best_model = 0
+for _ in range(100):
+    # runs x times
+    x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split( x, y, test_size = 0.1)
+    
+    l = linear_model.LinearRegression()
+    l.fit(x_train, y_train)
+    accuracy = l.score(x_test, y_test)
+    
+    if accuracy > best_model:
+        # if the model score is better than it will be saved
+        best_model = accuracy
+        with open("KNN.pickle", "wb") as f:
+            pickle.dump(l,f)'''
+    
+    
+    
