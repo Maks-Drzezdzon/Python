@@ -46,6 +46,7 @@ Y = list(clas)
 x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(X, Y, test_size = 0.1)
 
 # print(x_train, y_test)
+# 9 works best from what i found for this data set
 model = KNeighborsClassifier(n_neighbors = 9)
 
 model.fit(x_train, y_train)
