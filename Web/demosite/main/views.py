@@ -7,5 +7,5 @@ def index(response):
     return HttpResponse("<h1>Welcome Page</h1>")
 
 def view1(response):
-	return HttpResponse("<h2>view 1</h2>")
+	return HttpResponse("<h2>test 1</h2>")
 
