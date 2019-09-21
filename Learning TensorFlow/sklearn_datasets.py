@@ -39,4 +39,4 @@ classes_name = ['malignant', 'benign']
 # by passing it through a kernel
 # this should make it easier to implement a hyperplane but in a 3d space
 # f(x1, x2) -> x3
-# 
+# a soft margin allows for 
