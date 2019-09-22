@@ -15,7 +15,7 @@ y = cancer.target
 
 x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size = 0.1)
 
-classes_name = ['malignant', 'benign']
+# classes_name = ['malignant', 'benign']
 
 # support vector machine
 # a hyperplane is a line that spils/divides data
@@ -41,10 +41,10 @@ classes_name = ['malignant', 'benign']
 # f(x1, x2) -> x3
 # a soft margin allows for 
 
-# clf = svm.SVC(kernel="poly") # if you have some time to kill, will try later
+clf = svm.SVC(kernel="poly") # if you have some time to kill, will try later
 # clf = svm.SVC(kernel="poly", degree=2)
 # clf = svm.SVC(kernel="linear", C=2) 91%
-clf = KNeighborsClassifier(n_neighbors=10) # very high preditions even getting a 1, 9-11 neighbors seems best
+# clf = KNeighborsClassifier(n_neighbors=10) # very high preditions even getting a 1, 9-11 neighbors seems best
 clf.fit(x_train, y_train)
 y_pred = clf.predict(x_test)
 
