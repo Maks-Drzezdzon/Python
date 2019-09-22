@@ -1,10 +1,10 @@
 import sklearn
 from sklearn import datasets
 from sklearn import svm
-import pandas
-import matplotlib
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn import metrics
 
-
+# https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html
 cancer = datasets.load_breast_cancer()
 
 # print(cancer.feature_names)
@@ -40,3 +40,15 @@ classes_name = ['malignant', 'benign']
 # this should make it easier to implement a hyperplane but in a 3d space
 # f(x1, x2) -> x3
 # a soft margin allows for 
+
+# clf = svm.SVC(kernel="poly") # if you have some time to kill, will try later
+# clf = svm.SVC(kernel="poly", degree=2)
+# clf = svm.SVC(kernel="linear", C=2) 91%
+clf = KNeighborsClassifier(n_neighbors=10) # very high preditions even getting a 1, 9-11 neighbors seems best
+clf.fit(x_train, y_train)
+y_pred = clf.predict(x_test)
+
+acc = metrics.accuracy_score(y_test, y_pred)
+
+print(acc)
+
