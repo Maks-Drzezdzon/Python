@@ -1,5 +1,5 @@
 from collections import Counter
-# https://leetcode.com/problems/unique-number-of-occurrences/
+# https://leetcode.com/problems/unique-number-of-occurrences/ 87.75%
 class Solution:
     def uniqueOccurrences(self, arr: List[int]) -> bool:
         d = dict(Counter(arr))
