@@ -1,0 +1,7 @@
+# https://leetcode.com/problems/flipping-an-image/submissions/ 98.37
+class Solution:
+    def flipAndInvertImage(self, A: List[List[int]]) -> List[List[int]]:
+        return list([[1 - ele for ele in List][::-1] for List in A])
+
+
+        
