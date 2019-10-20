@@ -4,12 +4,25 @@ import random
 import re
 import sys
 
-
+# solution
 n, d = map(int, input().strip().split(' '))
-numbers = list(map(int, input().strip().split(' ')))
-a = ''.join(map(str,numbers[d:] + numbers[:d]))
-print(*a)
+numbers = list(input().strip().split(' '))
+newd = int(d)
+array1 = numbers[:newd]
+array2 = numbers[newd:]
 
+print(' '.join(array2+array1))
+
+# test case
+n, d = '20', '10'
+numbers = "41 73 89 7 10 1 59 58 84 77 77 97 58 1 86 58 26 10 86 51"
+
+newd = int(d)
+a = numbers.split(' ')
+array1 = a[:newd]
+array2 = a[newd:]
+
+print(' '.join(array2+array1))
 
 '''A left rotation operation on an array of size shifts each of the array's elements unit to the left. For example, if left rotations are performed on array , then the array would become
 
