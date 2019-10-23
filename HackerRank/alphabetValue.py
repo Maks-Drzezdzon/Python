@@ -13,20 +13,17 @@ def solution(S):
   
     for ele in S:
         if ele.isupper():
-            
-            
             lowerCase = ele.lower().strip()
-            
-            #print(lowerCase)
-            
             if lowerCase in S:
                 key = alphabet[lowerCase]
                 keys.append(key)
               
-    
     if len(keys) == 0:
         return "NO"
     return keys_list[values_list.index(max(keys))].upper()
 
-            
+# test cases
 print(solution('abc'))
+print(solution('Maks'))
+print(solution('aabcAiEEsA'))
+print(solution('AaBbPpEe'))
