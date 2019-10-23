@@ -1,26 +1,31 @@
-
 def solution(A, B):
-    # write your code in Python 3.6
-    counter=0
-    for ele in range(A, B +1):
-        result = math(ele)
-        if result == ele:
-            counter +=1
-        
     '''
-    for ele in range(A + 1):
-        s = math(ele)
-        if s == A:
-            counter_a += 1
-        
-    for ele in range(B + 1):
-        s = math(ele)
-        if s == B:
-            counter_b += 1'''
+    this was meant to take a range of elements 6 - 20
+    and return if any, pairs of numbers that * to form the numbers E.G
+    with formula N * ( N + 1)
     
+    in range 6,20
+    6=2*3, 12=3*4, 20=4*5
+    
+    '''
+    counter=0
+    
+    for ele in range(A, B +1):
+        result = math_helper_function(ele)
+        if result == 1:
+            counter +=1
+        else:
+            pass
+ 
     return counter
 
-def math(number):
-    return number * (number + 1)
+def math_helper_function(numbers):
+    for number in range(numbers + 1):
+        result = number * (number + 1)
+        if result == numbers:
+            return 1
+        else:
+            pass
+
 
 print(solution(6,20))
