@@ -6,9 +6,9 @@ def makeAnagram(s1, s2):
     c = a - b
     #print(c)
     d = b - a
-    print(d)
+    #print(d)
     e = c + d
-    print(e)
+    #print(e)
     return len(list(e.elements()))
     
 
