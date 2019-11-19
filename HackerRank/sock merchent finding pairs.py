@@ -1,5 +1,3 @@
-
-
 class Soulution:
     def answer(a: list):
         s=len(set(a))

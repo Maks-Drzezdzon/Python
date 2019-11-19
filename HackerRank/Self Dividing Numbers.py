@@ -8,7 +8,7 @@ class Solution:
             string = str(ele)
             str_len = len(string)
             count=0
-            if not '0' in string:
+            if '0' not in string:
                 for number in string:
 
                     if ele % int(number) == 0:
