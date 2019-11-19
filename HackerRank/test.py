@@ -40,6 +40,42 @@ def s(A, B):
     return -1
 
 
-
+def selectPackages(truckSpace, packagesSpace):
+    answer = list()
+    space = 30
+    
+    for i in list(sorted(reversed(packagesSpace))):
+        package1 = i
+        package2 = i+1
+        
+        if truckSpace - (package1 + package2) >= 30:
+            answer.append(package2)
+            answer.append(package1)
 
     
+    return answer
+    
+
+#print(selectPackages(80,[40,30,20,10]))   
+
+from collections import Counter
+def retrieveMostFrequentlyUsedWords(literatureText, wordsToExclude):
+    literature = list(literatureText.split(" "))
+    exclude = list(wordsToExclude)
+    print(exclude)
+    for word in exclude:
+        if word in literature:
+            print(literature.remove(word))
+       
+    print(literature)
+    counter = Counter(literature)
+    
+
+    # im not sure why for case 2 it feels like the code isnt being run ?
+    # the filer isnt taking out words
+    
+    return list(dict(counter.most_common(1)))
+
+text = "rose is a flower rose is pond a flower rose flower in garden garden garden pond pond rose is a rose is a rose is a rose is a"
+words=["a","rose","is"]
+# print(retrieveMostFrequentlyUsedWords(text, words))
