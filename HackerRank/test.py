@@ -5,6 +5,7 @@
 #There can be at max A 'a', B 'b' and C 'c'.
 
 #import re
+# liberty IT
 from collections import Counter
 def solution(a, b, c):
     v = a+b+c
@@ -20,8 +21,6 @@ def solution(a, b, c):
         else:
             return ''.join([ele for ele in answer if ele != None])
             
-    # if re.findall(r'((\w)\2{2,})', answer):
-        # return "wrong answer" no longer needed
     return ''.join(answer)
         
 
@@ -39,43 +38,61 @@ def s(A, B):
 
     return -1
 
-
+# amazon
 def selectPackages(truckSpace, packagesSpace):
     answer = list()
-    space = 30
+    space = truckSpace - 30 # has to be left
+    packages = list(sorted(reversed(packagesSpace)))
     
-    for i in list(sorted(reversed(packagesSpace))):
-        package1 = i
-        package2 = i+1
+    for p in range(len(packages)):
+        tmp = packages[p - 1]
+        package = packages[p - 2]
         
-        if truckSpace - (package1 + package2) >= 30:
-            answer.append(package2)
-            answer.append(package1)
-
+        if tmp + package <= space:
+            answer.append(packagesSpace.index(package))
+            answer.append(packagesSpace.index(tmp))
+            return answer
+        else:
+            pass
     
-    return answer
-    
 
-#print(selectPackages(80,[40,30,20,10]))   
+# print(selectPackages(80,[40,30,20,10]))
+#print(selectPackages(90,[40,30,20,30]))     
 
-from collections import Counter
+
 def retrieveMostFrequentlyUsedWords(literatureText, wordsToExclude):
     literature = list(literatureText.split(" "))
     exclude = list(wordsToExclude)
-    print(exclude)
-    for word in exclude:
-        if word in literature:
-            print(literature.remove(word))
-       
-    print(literature)
-    counter = Counter(literature)
-    
+    print("text " + str(literature))
+    print("exclude " + str(exclude))
+    answer=[]
 
-    # im not sure why for case 2 it feels like the code isnt being run ?
-    # the filer isnt taking out words
+    for word in literature:
+        if word in exclude:
+            pass
+        else:
+            answer.append(word)
     
-    return list(dict(counter.most_common(1)))
+    return answer
 
 text = "rose is a flower rose is pond a flower rose flower in garden garden garden pond pond rose is a rose is a rose is a rose is a"
-words=["a","rose","is"]
-# print(retrieveMostFrequentlyUsedWords(text, words))
+words = ["a","rose","is"]
+print(retrieveMostFrequentlyUsedWords(text, words))
+
+
+# swvre 
+# Flatten an array, e.g. [1,2,[3,4],5,[6,[8,9],10],11] -> [1,2,3,4,5,6,7,8,9,10,11]  
+l=[1,2,[3,4],5,[6,[8,9],10],11,[12,13,[14,[15,16]]]]
+l2= [1,2,[3,4],5,[6,[8,9],10],11]
+
+def convert(l):
+    a=[]   
+    for ele in l:
+        if type(ele) is list:
+            a.extend(convert(ele))
+        else:
+            a.append(ele)   
+    return a 
+
+#print(convert(l2))
+#print(convert(l))
