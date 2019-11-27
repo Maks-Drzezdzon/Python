@@ -96,3 +96,7 @@ def convert(l):
 
 #print(convert(l2))
 #print(convert(l))
+    
+################################
+# https://leetcode.com/discuss/interview-question/436073/
+# https://leetcode.com/discuss/interview-question/414085/
