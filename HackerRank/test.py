@@ -57,7 +57,7 @@ def selectPackages(truckSpace, packagesSpace):
     
 
 # print(selectPackages(80,[40,30,20,10]))
-#print(selectPackages(90,[40,30,20,30]))     
+print(selectPackages(90,[30,30]))     
 
 
 def retrieveMostFrequentlyUsedWords(literatureText, wordsToExclude):
@@ -77,7 +77,7 @@ def retrieveMostFrequentlyUsedWords(literatureText, wordsToExclude):
 
 text = "rose is a flower rose is pond a flower rose flower in garden garden garden pond pond rose is a rose is a rose is a rose is a"
 words = ["a","rose","is"]
-print(retrieveMostFrequentlyUsedWords(text, words))
+#print(retrieveMostFrequentlyUsedWords(text, words))
 
 
 # swvre 
@@ -100,3 +100,4 @@ def convert(l):
 ################################
 # https://leetcode.com/discuss/interview-question/436073/
 # https://leetcode.com/discuss/interview-question/414085/
+# https://leetcode.com/problems/copy-list-with-random-pointer/
