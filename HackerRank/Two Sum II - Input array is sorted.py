@@ -1,7 +1,2 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Nov 27 13:43:53 2019
-
-@author: Grim
-"""
+# https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
 
