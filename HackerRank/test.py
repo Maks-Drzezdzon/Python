@@ -40,23 +40,17 @@ def s(A, B):
 
 # amazon
 def selectPackages(truckSpace, packagesSpace):
-    answer = list()
-    space = truckSpace - 30 # has to be left
-    packages = list(sorted(reversed(packagesSpace)))
+    answer = dict()
+    space_available = truckSpace - 30 # has to have 30 space left for safety reasons 
     
-    for p in range(len(packages)):
-        tmp = packages[p - 1]
-        package = packages[p - 2]
+    for key, value in enumerate(packagesSpace):
+        if space_available - value in answer:
+            return [answer[space_available - value], key]
         
-        if tmp + package <= space:
-            answer.append(packagesSpace.index(package))
-            answer.append(packagesSpace.index(tmp))
-            return answer
-        else:
-            pass
-    
+        answer[value] = key
+            
 
-# print(selectPackages(80,[40,30,20,10]))
+print(selectPackages(80,[40,30,20,10]))
 print(selectPackages(90,[30,30]))     
 
 
