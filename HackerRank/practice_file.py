@@ -15,6 +15,7 @@ def matrix(matrix, target):
         return False
     
     i, j = 0, len(matrix[0]) - 1
+    
     while i < len(matrix) and j > -1:
         if matrix[i][j] == target:
             return True
