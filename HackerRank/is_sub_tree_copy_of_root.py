@@ -6,15 +6,17 @@ class TreeNode:
          self.left = None
          self.right = None
 
-def isSubtree(self, s: TreeNode, t: TreeNode) -> bool:
-    string_s = self.traverse_tree(s)
-    string_t = self.traverse_tree(t)
-    if string_t in string_s:
-        return True
-    return False
+class Solution:
+    def isSubtree(self, s: TreeNode, t: TreeNode) -> bool:
+        if not s: 
+            return False
+        if self.isSameTree(s, t): 
+            return True
+        return self.isSubtree(s.left, t) or self.isSubtree(s.right, t)
 
+    def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
+        if p and q:
+            return p.val == q.val and self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+        return p is q
 
-def traverse_tree(self, s):
-    if s:
-        return f"#{s.val} {self.traverse_tree(s.left)} {self.traverse_tree(s.right)}"
-    return None     
+print(Solution.isSubtree(4, 6))

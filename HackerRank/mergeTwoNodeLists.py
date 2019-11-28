@@ -6,20 +6,20 @@ class ListNode(object):
          self.next = None
 
 class Solution(object):
-    def mergeTwoLists(self, l1, l2):
+    def mergeTwoLists(self, head1, head2):
         head = sort_list = ListNode(0)
         
-        while(l1 and l2):
-            if (l1.val < l2.val):
-                sort_list.next = l1
-                l1 = l1.next
+        while(head1 and head2):
+            if (head1.val < head2.val):
+                sort_list.next = head1
+                head1 = head1.next
                 sort_list = sort_list.next
                 
-            elif (l1.val >= l2.val):
-                sort_list.next = l2
-                l2 = l2.next
+            elif (head1.val >= head2.val):
+                sort_list.next = head2
+                head2 = head2.next
                 sort_list = sort_list.next
 
-        sort_list.next = l1 or l2
+        sort_list.next = head1 or head2
         return head.next
         

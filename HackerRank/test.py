@@ -37,7 +37,7 @@ def s(A, B):
             return a
 
     return -1
-
+print(s([3,2,1,1],[6,2,3,4]))
 # amazon
 def selectPackages(truckSpace, packagesSpace):
     answer = dict()
@@ -73,6 +73,22 @@ text = "rose is a flower rose is pond a flower rose flower in garden garden gard
 words = ["a","rose","is"]
 #print(retrieveMostFrequentlyUsedWords(text, words))
 
+# amz
+# string , k max letters
+def substringk(s, k):
+    if not s or k == 0:
+        return []
+    
+    letter, res = {}, set()
+    start = 0
+    for i in range(len(s)):
+        if s[i] in letter and letter[s[i]] >= start:
+            start = letter[s[i]]+1
+        letter[s[i]] = i
+        if i-start+1 == k:
+            res.add(s[start:i+1])
+            start += 1
+    return list(res)
 
 # swvre 
 # Flatten an array, e.g. [1,2,[3,4],5,[6,[8,9],10],11] -> [1,2,3,4,5,6,7,8,9,10,11]  
@@ -90,7 +106,15 @@ def convert(l):
 
 #print(convert(l2))
 #print(convert(l))
-    
+
+# amazon pretest
+a = [1,0,0,0,1,0,0]
+days = 1
+result = [0,1,0,1,0,1,0]
+def cells(a, days):
+    pass
+
+
 ################################
 # https://leetcode.com/discuss/interview-question/436073/
 # https://leetcode.com/discuss/interview-question/414085/
