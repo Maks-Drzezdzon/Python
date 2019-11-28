@@ -1,13 +1,13 @@
 # https://leetcode.com/problems/two-sum/submissions/
 
-def twoSum(num, target):
+def twoSum(nums, target):
     answer = dict()
     
-    for key, val in enumerate(num):
+    for index, val in enumerate(nums): # you can pass in a starting index enumerate(nums, 1)
         if target - val in answer:
-            return [answer[target - val], key]
+            return [answer[target - val], index]
         
-        answer[val] = key
+        answer[val] = index
 
 
             
@@ -29,6 +29,6 @@ def twoSum(num, target):
     '''
             
 print(twoSum([2,2], 4))
-print(twoSum([1,2,3,4,5,6,7], 4))
-print(twoSum([5,2,1,4,2,3], 8))
-print(twoSum([9,8,4,2,3,4,1,2,3], 10))
+# print(twoSum([1,2,3,4,5,6,7], 4))
+# print(twoSum([5,2,1,4,2,3], 8))
+# print(twoSum([9,8,4,2,3,4,1,2,3], 10))
