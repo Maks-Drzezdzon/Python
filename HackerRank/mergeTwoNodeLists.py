@@ -14,19 +14,16 @@ def mergeTwoLists(self, head1: ListNode, head2: ListNode):
     if head2 == None:
         return head1
     
-    
     # go through both lists and compare nodes
     while(head1 and head2):
         if (head1.val < head2.val):
             ptr.next = head1
-            # set back to none
             head1 = head1.next
-            # moves pointer to next val
             
         elif (head1.val >= head2.val):
             ptr.next = head2
             head2 = head2.next
-            # moves pointer to next val
+            
         ptr = ptr.next
     
     # if one list is longer than the other finish the rest of the list with the longer list since they are already sorted 
