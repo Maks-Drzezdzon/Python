@@ -50,8 +50,8 @@ def selectPackages(truckSpace, packagesSpace):
         answer[value] = key
             
 
-print(selectPackages(80,[40,30,20,10]))
-print(selectPackages(90,[30,30]))     
+# print(selectPackages(80,[40,30,20,10]))
+# print(selectPackages(90,[30,30]))     
 
 
 def retrieveMostFrequentlyUsedWords(literatureText, wordsToExclude):
@@ -92,19 +92,19 @@ def substringk(s, k):
 
 # swvre 
 # Flatten an array, e.g. [1,2,[3,4],5,[6,[8,9],10],11] -> [1,2,3,4,5,6,7,8,9,10,11]  
-l=[1,2,[3,4],5,[6,[8,9],10],11,[12,13,[14,[15,16]]]]
+l=[1, 2, [3,4], 5, [6, [8,9], 10], 11, [12, 13, [14, [15, 16] ] ] ]
 l2= [1,2,[3,4],5,[6,[8,9],10],11]
 
-def convert(l):
+def convert(lis):
     a=[]   
-    for ele in l:
+    for ele in lis:
         if type(ele) is list:
             a.extend(convert(ele))
         else:
             a.append(ele)   
     return a 
 
-#print(convert(l2))
+print(convert(l2))
 #print(convert(l))
 
 # amazon pretest
