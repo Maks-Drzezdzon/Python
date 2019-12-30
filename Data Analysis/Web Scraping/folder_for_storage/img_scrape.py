@@ -28,18 +28,22 @@ def img(url):
         else:
             print("Error with get request")
 
-def vid(url):
+def img_f(url):
     response = get(url)
-    html_soup = BeautifulSoup(response.text, 'html.parser')
+    html_soup = BeautifulSoup(response.content, 'html5lib')
+    print(html_soup)
     # the tag
     # and class
-    data = html_soup.find_all('div', class_ = 'video')
+    data = html_soup.find_all('div', class_ = 'thumb_square')
     print(data[:500])
     
     # find the data that you want and pass it to write
     for ele in data:
         extracted_link = str(ele).split('"')[-2]
         extracted_file_name = str(ele).split('/')[-2].replace('"','')
+        print(extracted_link)
+        print(extracted_file_name)
+        break
         r = get(extracted_link)
         if r.status_code == 200:
             try:
@@ -52,4 +56,5 @@ def vid(url):
                 print(e)
         else:
             print("Error with get request")
-            
+
+img_f()        
