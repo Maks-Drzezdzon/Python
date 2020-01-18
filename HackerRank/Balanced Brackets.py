@@ -6,14 +6,15 @@ import random
 import re
 import sys
 
+
 # Complete the isBalanced function below.
-def isBalanced(s):
-    stack =[]
+def isBalanced(s: str) -> str:
+    stack = []
     for ele in s:
         if ele == '(' or ele == '[' or ele == '{':
             stack.append(ele)
         elif len(stack) == 0:
-                return "NO"
+            return "NO"
         else:
             bracket = stack.pop()
             if bracket == '(' and ele != ')':
