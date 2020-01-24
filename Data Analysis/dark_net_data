@@ -1,5 +1,0 @@
-import pandas as pd
-
-data = pd.read_csv("reviews.csv", error_bad_lines=False, chunksize=1000, nrows=100000)
-print(data)
-
