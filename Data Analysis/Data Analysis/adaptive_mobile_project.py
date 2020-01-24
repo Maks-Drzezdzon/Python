@@ -1,7 +1,8 @@
 import pandas as pd
 
 
-data = pd.read_csv("adaptive_mobile_dataset.csv") 
+data = pd.read_csv("../Data/adaptive_mobile_dataset.csv") 
+print(data)
 
 
 
