@@ -1,14 +1,15 @@
 import pandas as pd
 import re
+import time
 from detect_delimiter import detect
 
 path = "../Data/adaptive_mobile_dataset.csv"
+data = pd.read_csv(path)
 
-def read_file(path):
-    data = pd.read_csv(path) 
+def read_file():
     print(data)
 
-# read_file(path)
+# read_file()
 
 def to_tsv(path):
     '''
@@ -21,6 +22,8 @@ def to_tsv(path):
           # fileContent = re.sub("-", "\t", line)
           fileContent = re.sub(",", "\t", line)
           csv_file.write(fileContent)
+    
+    # done
 
 def data_sample():
     '''
@@ -32,9 +35,15 @@ def min_max_date_time():
     '''
     4) How would extract the minimum and maximum value from the "Datetime" column?
     '''
-    pass
+    # in memory solution without formating data in file
+    data['Datetime'] = pd.to_datetime(data['Datetime'])
+    print(min(data['Datetime']))
+    print(max(data['Datetime']))
+    
+    # done
 
-def no_duplicated_ids():
+
+def no_duplicate_ids():
     '''
     5) Let us suppose we don't want duplicated "ID"s. In case there are rows 
    with duplicated IDs we just keep the first row we've found: how would you 
@@ -49,8 +58,13 @@ def to_unix_timestamp():
     with a "Timestamp" column with the (Unix) timestamp in milliseconds?
     i.e., for the example above you would have:
     '''
-    pass
+    
+    # data.rename(columns = {'Datetime': 'Timestamp'})
+    
+    print(pd.to_datetime(data['Datetime']))
+    # print(pd.Timestamp(data['Datetime']))
    
+to_unix_timestamp()
     
 def count_orderby():
     '''
@@ -74,4 +88,7 @@ Questions:
     Could you describe different options/format for storing the data? 
     
     Which sanity checks would you apply and why?
+    
+    # TODO
+    look up working with large files in python best practices
 '''
