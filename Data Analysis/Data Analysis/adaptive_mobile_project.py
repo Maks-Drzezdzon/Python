@@ -39,7 +39,7 @@ def to_tsv(path):
                 fileContent = re.sub(",", "\t", line)
                 csv_file.write(fileContent)
                         
-    print('[*] done")
+    print("[*] done")
 
 
 def data_sample():
@@ -50,7 +50,7 @@ def data_sample():
     # there isnt enough data in this sample for 5% to work so i found another dataset
     random_sample = data_two.sample(frac = 0.05)
     print(random_sample)        
-    print('[*] done")
+    print("[*] done")
 
 def min_max_date_time():
     """
@@ -61,7 +61,7 @@ def min_max_date_time():
     data["Datetime"] = pd.to_datetime(data["Datetime"])
     print(min(data["Datetime"]))
     print(max(data["Datetime"]))        
-    print('[*] done")
+    print("[*] done")
 
 
 def no_duplicate_ids(path):
@@ -83,7 +83,7 @@ def no_duplicate_ids(path):
     data.drop_duplicates(subset = "ID", keep = "first", inplace = True)
     data.to_csv(new_name)
     print(data)       
-    print('[*] done")
+    print("[*] done")
 
 
 def to_unix_timestamp(path):
@@ -103,7 +103,7 @@ def to_unix_timestamp(path):
     print(rename_col)
     
     rename_col.to_csv(new_name)         
-    print('[*] done"))
+    print("[*] done")
 
 
 def count_orderby_sourcetype():
@@ -116,7 +116,7 @@ def count_orderby_sourcetype():
     # alt i would have used a hash function
     print(data['SourceType'].value_counts())
     print(data_two['First Name'].value_counts())        
-    print('[*] done")
+    print("[*] done")
 
 """
 Questions:
