@@ -1,8 +1,8 @@
 import pandas as pd
 import re
-import csv
 import datetime
 
+# global variables
 path = "../Data/adaptive_mobile_dataset.csv"
 data = pd.read_csv(path)
 
@@ -12,7 +12,12 @@ data_two = pd.read_csv(path_two)
 
 def main():
     def read_file():
+        """
+        original file
+        """
+        print(read_file.__doc__)
         print(data)
+        print("[*] done")
 
     read_file()
 
