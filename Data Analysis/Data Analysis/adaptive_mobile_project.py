@@ -4,10 +4,10 @@ import datetime
 
 # global variables
 path = "../Data/adaptive_mobile_dataset.csv"
-data = pd.read_csv(path)
+adaptive_mobile_dataset = pd.read_csv(path)
 
 path_two = "../Data/employees.csv"
-data_two = pd.read_csv(path_two)
+employees_data_set = pd.read_csv(path_two)
 
 
 def main():
@@ -16,7 +16,7 @@ def main():
         original file
         """
         print(read_file.__doc__)
-        print(data)
+        print(adaptive_mobile_dataset)
         print("[*] done")
 
     read_file()
@@ -52,8 +52,8 @@ def main():
         """
         print(data_sample.__doc__)
         # there isnt enough data in this sample for 5% to work so i found another dataset
-        # random_sample = data_two.sample(frac = 0.05) # 5%
-        random_sample = data.sample(frac=0.5)  # 50%
+        # random_sample = employees_data_set.sample(frac = 0.05) # 5%
+        random_sample = adaptive_mobile_dataset.sample(frac=0.5)  # 50%
         print(random_sample)
         print("[*] done")
 
@@ -65,9 +65,9 @@ def main():
         """
         print(min_max_date_time.__doc__)
         # in memory solution without formating data in file
-        data["Datetime"] = pd.to_datetime(data["Datetime"])
-        print(min(data["Datetime"]))
-        print(max(data["Datetime"]))
+        adaptive_mobile_dataset["Datetime"] = pd.to_datetime(adaptive_mobile_dataset["Datetime"])
+        print(min(adaptive_mobile_dataset["Datetime"]))
+        print(max(adaptive_mobile_dataset["Datetime"]))
         print("[*] done")
 
     min_max_date_time()
@@ -88,9 +88,9 @@ def main():
                 out_file.write(line)"""
         # a cleaner solution
         new_name = get_name("no_duplicate_ids", path)
-        data.drop_duplicates(subset="ID", keep="first", inplace=True)
-        data.to_csv(new_name)
-        print(data)
+        adaptive_mobile_dataset.drop_duplicates(subset="ID", keep="first", inplace=True)
+        adaptive_mobile_dataset.to_csv(new_name)
+        print(adaptive_mobile_dataset)
         print("[*] done")
 
     no_duplicate_ids(path)
@@ -104,7 +104,7 @@ def main():
         print(to_unix_timestamp.__doc__)
         epoch = datetime.datetime.utcfromtimestamp(0)
         new_name = get_name("to_unix_timestamp", path)
-        rename_col = data.rename(columns={"Datetime": "Timestamp"})
+        rename_col = adaptive_mobile_dataset.rename(columns={"Datetime": "Timestamp"})
 
         for time in pd.to_datetime(rename_col["Timestamp"]):
             ms = (time - epoch).total_seconds() * 1000.0
@@ -124,8 +124,8 @@ def main():
         """
         print(count_orderby_sourcetype.__doc__)
         # alt i would have used a hash function
-        print(data["SourceType"].value_counts())
-        # print(data_two['First Name'].value_counts())
+        print(adaptive_mobile_dataset["SourceType"].value_counts())
+        # print(adaptive_mobile_dataset_two['First Name'].value_counts())
         # TODO order by count dont forget
         print("[*] done")
 
