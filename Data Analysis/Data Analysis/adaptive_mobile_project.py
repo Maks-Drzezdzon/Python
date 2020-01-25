@@ -133,6 +133,10 @@ def main():
 
 
 if __name__ == "__main__":
+    """
+    formatted with black
+    written with spyder in anaconda environment
+    """
     main()
 
 """
