@@ -134,8 +134,9 @@ def main():
         """
         print(count_orderby_sourcetype.__doc__)
         # alt i would have used a hash function
-        print(adaptive_mobile_dataset["SourceType"].value_counts())
-        # print(employees_data_set['First Name'].value_counts())
+        # output is already in 
+        print(adaptive_mobile_dataset["SourceType"].value_counts().sort_values(ascending = False))
+        # print(employees_data_set['First Name'].value_counts(normalize=False, sort=True, ascending=False, bins=None, dropna=True))
         print("[*] done")
 
     count_orderby_sourcetype()
