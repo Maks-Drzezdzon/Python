@@ -68,12 +68,14 @@ def main():
         print(min_max_date_time.__doc__)
         # in memory solution without formating data in file
         try:
-            adaptive_mobile_dataset["Datetime"] = pd.to_datetime(adaptive_mobile_dataset["Datetime"])
+            adaptive_mobile_dataset["Datetime"] = pd.to_datetime(
+                adaptive_mobile_dataset["Datetime"]
+            )
         except ValueError as error:
             print(error)
         except Exception as e:
             print(e)
-            
+
         print(min(adaptive_mobile_dataset["Datetime"]))
         print(max(adaptive_mobile_dataset["Datetime"]))
         print("[*] done")
@@ -89,10 +91,12 @@ def main():
         print(no_duplicate_ids.__doc__)
         extracted_name = get_name("no_duplicate_ids", path)
         try:
-            adaptive_mobile_dataset.drop_duplicates(subset="ID", keep="first", inplace=True)
+            adaptive_mobile_dataset.drop_duplicates(
+                subset="ID", keep="first", inplace=True
+            )
         except Exception as e:
             print(e)
-            
+
         adaptive_mobile_dataset.to_csv(extracted_name)
         print(adaptive_mobile_dataset)
         print("[*] done")
@@ -118,7 +122,7 @@ def main():
                 print(error)
             except Exception as e:
                 print(e)
-                
+
         print(renamed_col)
 
         renamed_col.to_csv(extracted_name)
@@ -134,8 +138,12 @@ def main():
         """
         print(count_orderby_sourcetype.__doc__)
         # alt i would have used a hash function
-        # output is already in 
-        print(adaptive_mobile_dataset["SourceType"].value_counts().sort_values(ascending = False))
+        # output is already in
+        print(
+            adaptive_mobile_dataset["SourceType"]
+            .value_counts()
+            .sort_values(ascending=False)
+        )
         # print(employees_data_set['First Name'].value_counts(normalize=False, sort=True, ascending=False, bins=None, dropna=True))
         print("[*] done")
 
