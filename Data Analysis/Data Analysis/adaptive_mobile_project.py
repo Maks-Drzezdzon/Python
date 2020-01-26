@@ -3,11 +3,11 @@ import re
 import datetime
 
 # global variables
-path = "../Data/adaptive_mobile_dataset.csv"
-adaptive_mobile_dataset = pd.read_csv(path)
+adaptive_mobile_dataset_path = "../Data/adaptive_mobile_dataset.csv"
+adaptive_mobile_dataset = pd.read_csv(adaptive_mobile_dataset_path)
 
-path_two = "../Data/employees.csv"
-employees_data_set = pd.read_csv(path_two)
+employees_data_set_path = "../Data/employees.csv"
+employees_data_set = pd.read_csv(employees_data_set_path)
 
 
 def main():
@@ -33,10 +33,10 @@ def main():
         2) How would transform this file into a TSV file? (i.e. a file where the comma separator ',' is substituted with a tab character '\t')
         """
         print(to_tsv.__doc__)
-        new_name = get_name("to_tsv", path)
+        extracted_name = get_name("to_tsv", path)
 
         with open(path, "r") as myfile:
-            with open(new_name, "w") as csv_file:
+            with open(extracted_name, "w") as csv_file:
                 for line in myfile:
                     # fileContent = re.sub("-", "\t", line)
                     fileContent = re.sub(",", "\t", line)
@@ -44,7 +44,7 @@ def main():
 
         print("[*] done")
 
-    to_tsv(path)
+    to_tsv(adaptive_mobile_dataset_path)
 
     def data_sample():
         """
@@ -65,7 +65,13 @@ def main():
         """
         print(min_max_date_time.__doc__)
         # in memory solution without formating data in file
-        adaptive_mobile_dataset["Datetime"] = pd.to_datetime(adaptive_mobile_dataset["Datetime"])
+        try:
+            adaptive_mobile_dataset["Datetime"] = pd.to_datetime(adaptive_mobile_dataset["Datetime"])
+        except ValueError as error:
+            print(error)
+        except Exception as e:
+            print(e)
+            
         print(min(adaptive_mobile_dataset["Datetime"]))
         print(max(adaptive_mobile_dataset["Datetime"]))
         print("[*] done")
@@ -79,21 +85,17 @@ def main():
        extract a file, from the original one, without duplicated IDs?
         """
         print(no_duplicate_ids.__doc__)
-        """with open(path,'r') as in_file, open('test.csv','w') as out_file:
-            seen = set() 
-            for line in in_file:
-                if line in seen: continue # skip duplicate
-        
-                seen.add(line)
-                out_file.write(line)"""
-        # a cleaner solution
-        new_name = get_name("no_duplicate_ids", path)
-        adaptive_mobile_dataset.drop_duplicates(subset="ID", keep="first", inplace=True)
-        adaptive_mobile_dataset.to_csv(new_name)
+        extracted_name = get_name("no_duplicate_ids", path)
+        try:
+            adaptive_mobile_dataset.drop_duplicates(subset="ID", keep="first", inplace=True)
+        except Exception as e:
+            print(e)
+            
+        adaptive_mobile_dataset.to_csv(extracted_name)
         print(adaptive_mobile_dataset)
         print("[*] done")
 
-    no_duplicate_ids(path)
+    no_duplicate_ids(adaptive_mobile_dataset_path)
 
     def to_unix_timestamp(path):
         """
@@ -103,18 +105,18 @@ def main():
         """
         print(to_unix_timestamp.__doc__)
         epoch = datetime.datetime.utcfromtimestamp(0)
-        new_name = get_name("to_unix_timestamp", path)
-        rename_col = adaptive_mobile_dataset.rename(columns={"Datetime": "Timestamp"})
+        extracted_name = get_name("to_unix_timestamp", path)
+        renamed_col = adaptive_mobile_dataset.rename(columns={"Datetime": "Timestamp"})
 
-        for time in pd.to_datetime(rename_col["Timestamp"]):
+        for time in pd.to_datetime(renamed_col["Timestamp"]):
             ms = (time - epoch).total_seconds() * 1000.0
-            rename_col["Timestamp"] = ms
-        print(rename_col)
+            renamed_col["Timestamp"] = ms
+        print(renamed_col)
 
-        rename_col.to_csv(new_name)
+        renamed_col.to_csv(extracted_name)
         print("[*] done")
 
-    to_unix_timestamp(path)
+    to_unix_timestamp(adaptive_mobile_dataset_path)
 
     def count_orderby_sourcetype():
         """
@@ -125,8 +127,7 @@ def main():
         print(count_orderby_sourcetype.__doc__)
         # alt i would have used a hash function
         print(adaptive_mobile_dataset["SourceType"].value_counts())
-        # print(adaptive_mobile_dataset_two['First Name'].value_counts())
-        # TODO order by count dont forget
+        # print(employees_data_set['First Name'].value_counts())
         print("[*] done")
 
     count_orderby_sourcetype()
@@ -142,16 +143,34 @@ if __name__ == "__main__":
 """
 Questions:
 1) Which considerations can you make about the input data? 
-    # i have no idea ? check it conforms to a pattern ?
+    # its not sanitized, hasn't been cleaned, needs to conform to a pattern
+    
     If the file size is big (let’s say 20GB), how would store it? 
     # it depends on what kind of data it is
-    # compress it
+    # if its structured the MySQL
     
-    Would you keep the original format? If not, what would you do? 
+    # if nots not structured or semi structured MongoDB/NoSQL
+    # this is because joins are slower in MySQL and processing lots of data is time consuming
+    
+    # MariaDB is also a good alternative to both because it supports SQL and NoSQL
+    # compress it and store it on a cloud server so its easier to access with a .tar or gzip
+    
+    Would you keep the original format? If not, what would you do?
+    # it also depends what kind of data it is, does it need SQL or NoSQL, is it numerical or categorical
+    # it would need  to be labled etc
+    # if its not slow to access and decompress then keeping the format is ok 
+    # allowing to focus on other aspects of data storing such as technologies used
+    # this could be more beneficial and provide more speed 
     
     Could you describe different options/format for storing the data? 
+    # Options #
+    # NoSQL/SQL
+    # MariaDB supports both
+    # Cassandra tends to be used for Big Data
     
     Which sanity checks would you apply and why?
+    # validate spelling so that inconsistencies dont start emerging
+    # such as
     
     # TODO
     look up working with large files in python best practices
