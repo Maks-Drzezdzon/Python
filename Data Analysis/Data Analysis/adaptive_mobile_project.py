@@ -202,7 +202,7 @@ Questions:
     
     # Columnar Store work best when read from disk meaning smaller datasets in Gigabytes can be stored inhouse
     
-    # sharding could be used if the dataset gorws making the database divide data into chunks
+    # sharding could be used if the dataset grows making the database divide data into chunks
     
     # Formats #
     # CSV - easy to use slow save times avg load time, low 
