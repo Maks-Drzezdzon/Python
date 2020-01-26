@@ -4,9 +4,11 @@ import datetime
 
 # global variables
 adaptive_mobile_dataset_path = "../Data/adaptive_mobile_dataset.csv"
+# adaptive_mobile_dataset_path = "adaptive_mobile_dataset.csv"
 adaptive_mobile_dataset = pd.read_csv(adaptive_mobile_dataset_path)
 
 employees_data_set_path = "../Data/employees.csv"
+# employees_data_set_path = "employees.csv"
 employees_data_set = pd.read_csv(employees_data_set_path)
 
 
@@ -97,26 +99,32 @@ def main():
 
     no_duplicate_ids(adaptive_mobile_dataset_path)
 
-    def to_unix_timestamp(path):
+    def unix_timestamp_in_ms(path):
         """
         6) How would you create a new file where the "Datetime" column is substituted
         with a "Timestamp" column with the (Unix) timestamp in milliseconds?
         i.e., for the example above you would have:
         """
-        print(to_unix_timestamp.__doc__)
+        print(unix_timestamp_in_ms.__doc__)
         epoch = datetime.datetime.utcfromtimestamp(0)
         extracted_name = get_name("to_unix_timestamp", path)
         renamed_col = adaptive_mobile_dataset.rename(columns={"Datetime": "Timestamp"})
 
         for time in pd.to_datetime(renamed_col["Timestamp"]):
-            ms = (time - epoch).total_seconds() * 1000.0
-            renamed_col["Timestamp"] = ms
+            try:
+                ms = (time - epoch).total_seconds() * 1000.0
+                renamed_col["Timestamp"] = ms
+            except ValueError as error:
+                print(error)
+            except Exception as e:
+                print(e)
+                
         print(renamed_col)
 
         renamed_col.to_csv(extracted_name)
         print("[*] done")
 
-    to_unix_timestamp(adaptive_mobile_dataset_path)
+    unix_timestamp_in_ms(adaptive_mobile_dataset_path)
 
     def count_orderby_sourcetype():
         """
@@ -142,36 +150,68 @@ if __name__ == "__main__":
 
 """
 Questions:
-1) Which considerations can you make about the input data? 
+1)  
+    -> Which considerations can you make about the input data? 
     # its not sanitized, hasn't been cleaned, needs to conform to a pattern
     
-    If the file size is big (let’s say 20GB), how would store it? 
-    # it depends on what kind of data it is
-    # if its structured the MySQL
     
+    
+    
+    -> If the file size is big (let’s say 20GB), how would store it? 
+    # it depends on what kind of data it is
+    # if its structured then MySQL
     # if nots not structured or semi structured MongoDB/NoSQL
+    
     # this is because joins are slower in MySQL and processing lots of data is time consuming
     
     # MariaDB is also a good alternative to both because it supports SQL and NoSQL
     # compress it and store it on a cloud server so its easier to access with a .tar or gzip
     
-    Would you keep the original format? If not, what would you do?
+    
+    
+    
+    -> Would you keep the original format? If not, what would you do?
     # it also depends what kind of data it is, does it need SQL or NoSQL, is it numerical or categorical
-    # it would need  to be labled etc
+    # it might need to be labled etc
+    
+    # Search engines excel at text queries, e.g elasticsearch    
+    # Columnar stores for faster sum and avg operations on for example numerical data, e.g RedShift
+    
     # if its not slow to access and decompress then keeping the format is ok 
+    
     # allowing to focus on other aspects of data storing such as technologies used
     # this could be more beneficial and provide more speed 
     
-    Could you describe different options/format for storing the data? 
+    
+    
+    
+    -> Could you describe different options/format for storing the data? 
     # Options #
-    # NoSQL/SQL
+    # NoSQL/SQL with tables, collections, schemas etc
     # MariaDB supports both
     # Cassandra tends to be used for Big Data
     
-    Which sanity checks would you apply and why?
-    # validate spelling so that inconsistencies dont start emerging
-    # such as
+    # Columnar Store work best when read from disk meaning smaller datasets in Gigabytes can be stored inhouse
     
-    # TODO
-    look up working with large files in python best practices
+    # sharding could be used if the dataset gorws making the database divide data into chunks
+    
+    # Formats #
+    # CSV - easy to use slow save times avg load time, low 
+    # Pickle also works for AI models - fast read and save time, high memory consumption
+    # JSON - fast read and load time
+    # HDF5 for large amounts of data - avg read and save time, high memory consumption
+    # Feather is a binary file format for storing data frames - very fast read and save time however this is due to the nature of small dataframes
+    # Parquet - Hadoop columnar storage format - fast read and save time
+    
+    
+    -> Which sanity checks would you apply and why?
+    # validate spelling so that inconsistencies dont start emerging
+    # date format check or formated
+    # how values are entered 1 vs 1.0
+    # avoid duplicated data
+    # compare head() or tail() of dataset to random sample to ensure that structure is the same
+    # check value distribution, odd data distribution may speak up for larger data quality issues
+    # e.g some data points are missing, data doesnt add up i.e peak website traffic being at quater past midnight (00:15) vs 15:00 pm because of bad input
+    # 
+    
 """
