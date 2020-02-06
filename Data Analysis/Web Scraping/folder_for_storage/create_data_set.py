@@ -4,11 +4,21 @@ from PIL import Image
 from io import BytesIO
 import os
 
+
+def educate_plus(url):
+    response = get(url)
+    html_soup = BeautifulSoup(response.text, 'html.parser')
+    data = html_soup.find_all('a', class_ = 'odd')
+    
+    
+    return data
+
+print(educate_plus('https://educateplus.ie/markingscheme/junior-cert-german-higher-level'))
+
+
 def img(url):
     response = get(url)
     html_soup = BeautifulSoup(response.text, 'html.parser')
-    # the tag
-    # and class
     data = html_soup.find_all('a', class_ = 'image-list-link')
     
     # find the data that you want and pass it to write
@@ -28,4 +38,3 @@ def img(url):
         else:
             print("Error with get request")
             
-img("https://imgur.com/r/Beagle")
