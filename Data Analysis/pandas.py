@@ -1,11 +1,9 @@
 import pandas as pd
-import re
 
-
-dev_survey_dataset_path = "../Data/developer_survey_2019/survey_results_public.csv"
+dev_survey_dataset_path = "Data/survey_results_public.csv"
 dev_survey_dataset = pd.read_csv(dev_survey_dataset_path)
 
-survey_schema_dataset_path = "../Data/developer_survey_2019/survey_results_schema.csv"
+survey_schema_dataset_path = "Data/survey_results_schema.csv"
 survey_schema_dataset = pd.read_csv(survey_schema_dataset_path)
 
 
@@ -34,7 +32,7 @@ br()
 
 people = {
     "first": ["Maks", "Adam", "Magda"],
-    "last": ["Drzezdzon", "Pekalski", "Pekalska"],
+    "last": ["D", "P", "P"],
     "email": ["maks@email.com", "adam@email.com", "magda@email.com"],
 }
 
@@ -72,3 +70,15 @@ br()
 print(df.iloc[0])
 print(df.iloc[[0, 2]])
 br()
+# to get the email of the first 2 rows
+print(df.iloc[[0, 2], 2])
+br()
+# for locations
+print(df.loc[0])
+br()
+# you can also pass in the label
+print(df.loc[[0,1], ['email', 'name']])
+br()
+print(dev_survey_dataset['Hobbyist'].value_counts())
+br()
+
