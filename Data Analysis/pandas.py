@@ -77,8 +77,11 @@ br()
 print(df.loc[0])
 br()
 # you can also pass in the label
-print(df.loc[[0,1], ['email', 'name']])
+print(df.loc[[0, 1], ["email", "name"]])
 br()
-print(dev_survey_dataset['Hobbyist'].value_counts())
+print(dev_survey_dataset["Hobbyist"].value_counts())
 br()
-
+# getting data for first row in col hobbyist, loc is also inclusive
+print(dev_survey_dataset.loc[0, "Hobbyist"])
+br()
+print(dev_survey_dataset.loc[0:2, "Hobbyist":"Employment"])
