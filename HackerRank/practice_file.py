@@ -7,7 +7,7 @@ def answer(target,nums):
         
         answer[value] = key
     
-print(answer(2,[1,2,3,1, -1]))
+print(answer(2, [1, 2, 3, 1, -1]))
 
 
 def matrix(matrix, target):

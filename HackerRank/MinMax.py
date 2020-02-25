@@ -2,7 +2,7 @@ class Solution:
     def answer(a: list) -> list:
         answer = []
         
-        numbers = [ele for ele in sorted(a)]
+        numbers = sorted(a)
             
         min_val = sum(numbers) - numbers[-1]
         max_val = sum(numbers) - numbers[0]

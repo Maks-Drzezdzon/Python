@@ -15,4 +15,4 @@ def makeAnagram(s1, s2):
 
 s1="showman"
 s2="woman"
-makeAnagram(s1,s2)
+print(makeAnagram(s1,s2))
