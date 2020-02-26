@@ -20,17 +20,31 @@ def solution(A, K):
         return False
     else:
         return True
-    
+
+'''  
 print(solution([1,1,2,3], 3)) # true
 print(solution([1,2,3], 3)) # true
 print(solution([1,1,3], 2)) # false
 print(solution([1,2,2,4], 4)) # false
 print(solution([1,2,3,4], 4)) # true
-
+'''
 
 
 
 def idk(nums):
+    '''
+    this is kind of what i should have done for my interview but not really because it returns true or false instead of the number
+
+    array is meant to look like
+    [1,2,1,3,1,4]
+    or
+    [2,1,3,2,5,1]
+    if it does not
+    can you make it fit that pattern
+    if so
+    which num will you remove
+    '''
+    
     if len(nums) <= 1:
         return True
     
@@ -41,15 +55,13 @@ def idk(nums):
     a, b = nums[:], nums[:]
     
     a[i], b[i+1] = nums[i+1], nums[i]
-    
     return a == sorted(a) or b == sorted(b)
 
 
 
 #import re
-# liberty IT
 from collections import Counter
-def solution(a, b, c):
+def solution3(a, b, c):
     v = a+b+c
     answer = [None] * v
     counter = Counter(dict(a=a, b=b, c=c))
