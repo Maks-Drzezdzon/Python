@@ -28,6 +28,24 @@ print(solution([1,2,2,4], 4)) # false
 print(solution([1,2,3,4], 4)) # true
 
 
+
+
+def idk(nums):
+    if len(nums) <= 1:
+        return True
+    
+    for i in range(len(nums)-1):
+        if nums[i] > nums[i+1]:
+            break
+            
+    a, b = nums[:], nums[:]
+    
+    a[i], b[i+1] = nums[i+1], nums[i]
+    
+    return a == sorted(a) or b == sorted(b)
+
+
+
 #import re
 # liberty IT
 from collections import Counter
