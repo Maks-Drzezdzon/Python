@@ -4,6 +4,23 @@
 #Given A, B, C, find any string of maximum length that can be created such that no 3 consecutive characters are same.
 #There can be at max A 'a', B 'b' and C 'c'.
 
+
+def solution(A, K):
+    n = len(A)
+    for i in range(n - 1):
+        if (A[i] != A[i + 1] and A[i] + 1 == A[i + 1] - 1):
+        # if (A[i] + 1 > A[i + 1]):
+            return False
+    if set(A) in set([ele for ele in range(1,K + 1)]):
+    # if A[0] != 1 and A[n] != K:
+        return False
+    else:
+        return True
+    
+print(solution([1,1,2,3], 3)) # true
+
+
+
 #import re
 # liberty IT
 from collections import Counter
@@ -37,7 +54,8 @@ def s(A, B):
             return a
 
     return -1
-print(s([3,2,1,1],[6,2,3,4]))
+# print(s([3,2,1,1],[6,2,3,4]))
+
 # amazon
 def selectPackages(truckSpace, packagesSpace):
     answer = dict()
@@ -104,7 +122,7 @@ def convert(lis):
             a.append(ele)   
     return a 
 
-print(convert(l2))
+# print(convert(l2))
 #print(convert(l))
 
 # amazon pretest
