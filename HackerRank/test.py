@@ -6,6 +6,10 @@
 
 
 def solution(A, K):
+    '''
+    check if A is in range of 1 to K
+    '''
+    
     n = len(A)
     for i in range(n - 1):
         if (A[i] != A[i + 1] and A[i] + 1 == A[i + 1] - 1):
@@ -18,7 +22,10 @@ def solution(A, K):
         return True
     
 print(solution([1,1,2,3], 3)) # true
-
+print(solution([1,2,3], 3)) # true
+print(solution([1,1,3], 2)) # false
+print(solution([1,2,2,4], 4)) # false
+print(solution([1,2,3,4], 4)) # true
 
 
 #import re
