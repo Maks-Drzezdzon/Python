@@ -12,6 +12,12 @@ def relativeSortArray(arr1, arr2):
     return [lis for sublist in res for lis in sublist] + sorted(c.elements())
 
 
-print(relativeSortArray([1,1,4,4,2,1,2,3,4],[1,2,3,4]))
+# print(relativeSortArray([1,1,4,4,2,1,2,3,4],[1,2,3,4]))
 
 
+test = [1,2,2,3,3,3,3]
+test_list = [3,2,1]
+a = collections.Counter(t)
+# print([i*a.pop(i) for i in tt])
+print(2*a.pop(3))
+print(a)
