@@ -3,9 +3,9 @@ import re
 import datetime
 
 # global variables
-adaptive_mobile_dataset_path = "../Data/adaptive_mobile_dataset.csv"
-# adaptive_mobile_dataset_path = "adaptive_mobile_dataset.csv"
-adaptive_mobile_dataset = pd.read_csv(adaptive_mobile_dataset_path)
+mobile_dataset_path = "../Data/mobile_dataset.csv"
+# mobile_dataset_path = "mobile_dataset.csv"
+mobile_dataset = pd.read_csv(mobile_dataset_path)
 
 employees_data_set_path = "../Data/employees.csv"
 # employees_data_set_path = "employees.csv"
@@ -18,7 +18,7 @@ def main():
         original file
         """
         print(read_file.__doc__)
-        print(adaptive_mobile_dataset)
+        print(mobile_dataset)
         print("[*] done")
 
     read_file()
@@ -46,7 +46,7 @@ def main():
 
         print("[*] done")
 
-    to_tsv(adaptive_mobile_dataset_path)
+    to_tsv(mobile_dataset_path)
 
     def data_sample():
         """
@@ -55,7 +55,7 @@ def main():
         print(data_sample.__doc__)
         # there isnt enough data in this sample for 5% to work so i found another dataset
         # random_sample = employees_data_set.sample(frac = 0.05) # 5%
-        random_sample = adaptive_mobile_dataset.sample(frac=0.5)  # 50%
+        random_sample = mobile_dataset.sample(frac=0.5)  # 50%
         print(random_sample)
         print("[*] done")
 
@@ -68,16 +68,16 @@ def main():
         print(min_max_date_time.__doc__)
         # in memory solution without formating data in file
         try:
-            adaptive_mobile_dataset["Datetime"] = pd.to_datetime(
-                adaptive_mobile_dataset["Datetime"]
+            mobile_dataset["Datetime"] = pd.to_datetime(
+                mobile_dataset["Datetime"]
             )
         except ValueError as error:
             print(error)
         except Exception as e:
             print(e)
 
-        print(min(adaptive_mobile_dataset["Datetime"]))
-        print(max(adaptive_mobile_dataset["Datetime"]))
+        print(min(mobile_dataset["Datetime"]))
+        print(max(mobile_dataset["Datetime"]))
         print("[*] done")
 
     min_max_date_time()
@@ -91,17 +91,17 @@ def main():
         print(no_duplicate_ids.__doc__)
         extracted_name = get_name("no_duplicate_ids", path)
         try:
-            adaptive_mobile_dataset.drop_duplicates(
+            mobile_dataset.drop_duplicates(
                 subset="ID", keep="first", inplace=True
             )
         except Exception as e:
             print(e)
 
-        adaptive_mobile_dataset.to_csv(extracted_name)
-        print(adaptive_mobile_dataset)
+        mobile_dataset.to_csv(extracted_name)
+        print(mobile_dataset)
         print("[*] done")
 
-    no_duplicate_ids(adaptive_mobile_dataset_path)
+    no_duplicate_ids(mobile_dataset_path)
 
     def unix_timestamp_in_ms(path):
         """
@@ -112,7 +112,7 @@ def main():
         print(unix_timestamp_in_ms.__doc__)
         epoch = datetime.datetime.utcfromtimestamp(0)
         extracted_name = get_name("to_unix_timestamp", path)
-        renamed_col = adaptive_mobile_dataset.rename(columns={"Datetime": "Timestamp"})
+        renamed_col = mobile_dataset.rename(columns={"Datetime": "Timestamp"})
 
         for time in pd.to_datetime(renamed_col["Timestamp"]):
             try:
@@ -128,7 +128,7 @@ def main():
         renamed_col.to_csv(extracted_name)
         print("[*] done")
 
-    unix_timestamp_in_ms(adaptive_mobile_dataset_path)
+    unix_timestamp_in_ms(mobile_dataset_path)
 
     def count_orderby_sourcetype():
         """
@@ -140,7 +140,7 @@ def main():
         # alt i would have used a hash function
         # output is already in
         print(
-            adaptive_mobile_dataset["SourceType"]
+            mobile_dataset["SourceType"]
             .value_counts()
             .sort_values(ascending=False)
         )
