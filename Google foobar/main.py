@@ -32,8 +32,6 @@ def foobar2(s):
     # Your code here
     a = "".join([letter for letter in s if letter is not '-']
                 ).lstrip("<").rstrip(">")
-    a = list(a)
-
     counter = 0
 
     left_stack = a.copy()
