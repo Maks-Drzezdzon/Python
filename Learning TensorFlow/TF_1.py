@@ -2,7 +2,7 @@
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
-minst = tf.keras.datasets.minst # dataset of hand-written digits from 0-9
+minst = tf.keras.datasets.mnist # dataset of hand-written digits from 0-9
 
 # learnign parameters /hyper param
 learn_rate = 0.01 # how fast the weights are being updated , 

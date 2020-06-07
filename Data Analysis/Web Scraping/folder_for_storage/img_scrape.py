@@ -11,6 +11,7 @@ def img(url):
     # and class
     data = html_soup.find_all('img', class_ = 'img-back lasyload')
     
+    
     # find the data that you want and pass it to write
     for ele in data:
         extracted_link = str(ele).split('"')[-2]
@@ -57,4 +58,4 @@ def img_f(url):
         else:
             print("Error with get request")
 
-img_f()        
+img_f("scrolller.com/r/stpeach-pics")        
