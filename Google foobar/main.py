@@ -14,14 +14,14 @@ def foobar1(x):
         'b': 'y', 'a': 'z'
     }
 
-    a = ""
-    for letter in y:
+    cypher = ""
+    for letter in x:
         if letter in d:
-            a = a + letter.replace(letter, d[letter])
+            cypher = cypher + letter.replace(letter, d[letter])
         else:
-            a = a + letter
+            cypher = cypher + letter
 
-    return a.strip(" ")
+    return cypher.strip(" ")
 
 
 print(foobar1("Yvzs! I xzm'g yvorvev Lzmxv olhg srh qly zg gsv xlolmb!!"))
@@ -30,7 +30,7 @@ print(foobar1("wrw blf hvv ozhg mrtsg'h vkrhlwv?"))
 
 def foobar2(s):
     # Your code here
-    a = "".join([letter for letter in s if letter is not '-']
+    a = "".join([letter for letter in s if letter != '-']
                 ).lstrip("<").rstrip(">")
     a = list(a)
 
