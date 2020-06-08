@@ -1,5 +1,3 @@
-
-
 from collections import Counter
 
 
@@ -16,8 +14,6 @@ def foobar1(x):
         'b': 'y', 'a': 'z'
     }
 
-# x = "Yvzs! I xzm'g yvorvev Lzmxv olhg srh qly zg gsv xlolmb!!"
-# y = "wrw blf hvv ozhg mrtsg'h vkrhlwv?"
     a = ""
     for letter in y:
         if letter in d:
@@ -26,6 +22,10 @@ def foobar1(x):
             a = a + letter
 
     return a.strip(" ")
+
+
+print(foobar1("Yvzs! I xzm'g yvorvev Lzmxv olhg srh qly zg gsv xlolmb!!"))
+print(foobar1("wrw blf hvv ozhg mrtsg'h vkrhlwv?"))
 
 
 def foobar2(s):
