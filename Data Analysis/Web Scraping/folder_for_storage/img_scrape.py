@@ -4,18 +4,18 @@ from PIL import Image
 from io import BytesIO
 import os
 
+
 def img(url):
     response = get(url)
     html_soup = BeautifulSoup(response.text, 'html.parser')
     # the tag
     # and class
-    data = html_soup.find_all('img', class_ = 'img-back lasyload')
-    
-    
+    data = html_soup.find_all('img', class_='img-back lasyload')
+
     # find the data that you want and pass it to write
     for ele in data:
         extracted_link = str(ele).split('"')[-2]
-        extracted_file_name = str(ele).split('/')[-2].replace('"','')
+        extracted_file_name = str(ele).split('/')[-2].replace('"', '')
         r = get(extracted_link)
         if r.status_code == 200:
             try:
@@ -29,19 +29,20 @@ def img(url):
         else:
             print("Error with get request")
 
+
 def img_f(url):
     response = get(url)
     html_soup = BeautifulSoup(response.content, 'html5lib')
     print(html_soup)
     # the tag
     # and class
-    data = html_soup.find_all('div', class_ = 'thumb_square')
+    data = html_soup.find_all('div', class_='thumb_square')
     print(data[:500])
-    
+
     # find the data that you want and pass it to write
     for ele in data:
         extracted_link = str(ele).split('"')[-2]
-        extracted_file_name = str(ele).split('/')[-2].replace('"','')
+        extracted_file_name = str(ele).split('/')[-2].replace('"', '')
         print(extracted_link)
         print(extracted_file_name)
         break
@@ -58,4 +59,5 @@ def img_f(url):
         else:
             print("Error with get request")
 
-img_f("scrolller.com/r/stpeach-pics")        
+
+img_f("link here")
